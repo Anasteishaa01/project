@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Header from '../Header/Header';
 import WordCard from '../WordCard/WordCard';
+import Footer from '../Footer/Footer';
 import '../App/App.scss'
 
 function App() {
   return (
     <>
-      <Header/>
-      <WordCard/>
-      <Footer/>
+      <Header />
+      <WordCard />
+      <Footer />
     </>
   );
 }

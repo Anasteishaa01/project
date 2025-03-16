@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../WordCard'
+import '../WordCard/WordCard.scss'
 
 export default function WordCard () {
     const [words, setWords] = useState([]);
@@ -9,18 +9,18 @@ export default function WordCard () {
     const [editedWord, setEditedWord] = useState({});
 
     const fetchData = async () => {
-    try {
-        const response = await fetch('http://itgirlschool.justmakeit.ru/api/words');
-        if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        try {
+            const response = await fetch('http://itgirlschool.justmakeit.ru/api/words');
+            if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            setWords(data);
+            setLoading(false);
+        } catch (e) {
+            setError(e);
+            setLoading(false);
         }
-        const data = await response.json();
-        setWords(data);
-        setLoading(false);
-    } catch (e) {
-        setError(e);
-        setLoading(false);
-    }
     };
     fetchData();
 
@@ -67,11 +67,11 @@ export default function WordCard () {
             <table>
             <thead>
                 <tr>
-                <th>English</th>
-                <th>Russian</th>
-                <th>Transcription</th>
-                <th>Part of Speech</th>
-                <th>Actions</th>
+                    <th>English</th>
+                    <th>Russian</th>
+                    <th>Transcription</th>
+                    <th>Part of Speech</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
